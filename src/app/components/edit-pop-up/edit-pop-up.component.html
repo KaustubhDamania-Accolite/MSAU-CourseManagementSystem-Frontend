@@ -1,0 +1,22 @@
+<form class="example-form" #uploadform="ngForm"><span style="float: right;  cursor: pointer;" mat-dialog-close class="material-icons">
+    close
+    </span>
+      <mat-form-field class="example-full-width">
+        <mat-label>Course Name</mat-label>
+        <input type="text" matInput placeholder="Enter edited Title..." name="courseName" [(ngModel)]='course.courseName' required>
+      </mat-form-field>
+      <br>
+    
+      <mat-form-field class="example-full-width">
+        <mat-label>Course Description</mat-label>
+        <input type="text" matInput placeholder="Enter edited Description..." name="courseDescription" [(ngModel)]='course.courseDescription' required>
+      </mat-form-field>
+      <br>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Prerequisite</mat-label>
+        <input type="text" matInput placeholder="Enter edited Prerequisite..." name="prerequisite" [(ngModel)]='course.prerequisite' required>
+      </mat-form-field>
+      <br>
+      <button mat-raised-button type="submit" color="accent" (click) = "onEdit()">Edit</button>
+  </form>

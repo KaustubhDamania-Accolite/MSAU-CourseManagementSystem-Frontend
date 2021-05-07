@@ -1,0 +1,42 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+
+
+.example-card {
+    // max-width: 400px;
+    // text-align: center;
+    font-weight: bolder;
+  }
+
+  .example-full-width {
+    width: 40%;
+  }
+
+  .card {
+      margin: 2%;
+      box-shadow: 12px;
+  }
+
+// .material-icon{
+//     padding-top: 2%;
+// }
+
+.tab { 
+  display: inline-block; 
+  margin-left: 50%; 
+}
+
+input{
+  height: 28px;
+}
+
+.space { 
+  display: inline-block; 
+  margin-left: 2%; 
+}
+
+// h1{
+//   background-color: #000;
+//   color: white;
+// }

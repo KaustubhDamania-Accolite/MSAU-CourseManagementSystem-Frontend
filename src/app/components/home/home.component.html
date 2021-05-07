@@ -1,0 +1,50 @@
+<mat-toolbar color="primary">
+    <button mat-icon-button routerLinkActive="active item" [routerLinkActiveOptions]="{exact : true}" routerLink="/viewCourse" class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>home</mat-icon>
+    </button>
+    <span>Course Management</span>
+
+    <span class="example-spacer"></span>
+    <button mat-raised-button style="margin-right: 2%;" routerLinkActive="active item" [routerLinkActiveOptions]="{exact : true}" routerLink="/addCourse">Add Course</button>
+    <button mat-raised-button style="margin-right: 2%;" routerLinkActive="active item" [routerLinkActiveOptions]="{exact : true}" routerLink="/editCourse">My Courses</button>
+    <button mat-raised-button style="margin-right: 2%;" routerLinkActive="active item" [routerLinkActiveOptions]="{exact : true}" routerLink="/trends">Trends</button>
+
+    <!-- <button mat-raised-button style="margin-right: 2%;" routerLinkActive="active item" [routerLinkActiveOptions]="{exact : true}" routerLink="/viewCourse">View Course</button> -->
+    <button mat-icon-button (click) = "signOut();" class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <mat-icon>logout</mat-icon>
+    </button>
+</mat-toolbar>
+
+<!-- <mat-sidenav-container>
+  <mat-sidenav #sidenav>
+    <mat-nav-list>
+
+
+
+<mat-nav-list class="list-container">
+  <a mat-list-item routerLink="/home" routerLinkActive="active-link" (click)="sidenav.toggle()">
+    <span class="material-icons">home</span>
+    <a mat-list-item> Home </a>
+  </a>
+</mat-nav-list>
+<mat-nav-list class="list-container">
+  <a mat-list-item [routerLink]="['/home/subs']" (click)="sidenav.toggle()">
+    <span class="material-icons">subscriptions</span>
+    <a mat-list-item > My Subscriptions </a>
+  </a>
+</mat-nav-list>
+<mat-nav-list class="list-container">
+  <a mat-list-item [routerLink]="['/home/videos']" (click)="sidenav.toggle()">
+    <span class="material-icons">video_library</span>
+    <a mat-list-item > My Videos </a>
+  </a>
+</mat-nav-list>
+<mat-nav-list class="list-container">
+  <a mat-list-item  [routerLink]="['/home/upload']" (click)="sidenav.toggle()" routerLinkActive="active-link">
+    <span class="material-icons">publish</span>
+    <a mat-list-item > Upload Video </a>
+  </a>
+</mat-nav-list>
+</mat-nav-list>
+</mat-sidenav>
+</mat-sidenav-container> -->

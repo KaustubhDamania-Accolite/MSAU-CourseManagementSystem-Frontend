@@ -1,0 +1,98 @@
+<mat-toolbar color="primary">
+    <button mat-icon-button routerLinkActive="active item" [routerLinkActiveOptions]="{exact : true}" routerLink="/viewCourse" class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>home</mat-icon>
+    </button>
+    <span>Course Management</span>
+    
+    <span class="example-spacer"></span>
+    <!-- <button mat-raised-button  routerLinkActive="active item" [routerLinkActiveOptions]="{exact : true}" routerLink="/course">Add Course</button> -->
+    <button mat-raised-button style="margin-right: 2%;" routerLinkActive="active item" [routerLinkActiveOptions]="{exact : true}" routerLink="/addCourse">Add Course</button>
+    <button mat-raised-button style="margin-right: 2%;" routerLinkActive="active item" [routerLinkActiveOptions]="{exact : true}" routerLink="/editCourse">My Courses</button>
+    <button mat-raised-button style="margin-right: 2%;" routerLinkActive="active item" [routerLinkActiveOptions]="{exact : true}" routerLink="/trends">Trends</button>
+    
+    <!-- <button mat-raised-button style="margin-right: 2%;" >View Course</button> -->
+    
+    <button mat-icon-button (click) = "signOut();" class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <mat-icon>logout</mat-icon>
+    </button>
+</mat-toolbar>
+<br>
+
+<!-- <mat-form-field class="example-full-width">
+  <mat-label>Course Name</mat-label>
+  <input type="text" matInput placeholder="Enter Course Name Ex. Angular" name="courseName" [(ngModel)]='course.courseName' required>
+</mat-form-field> -->
+<div class="container" align = "center">
+  <br><br>
+
+<h1> <span class="material-icons">
+  add_box
+  </span> Add Course</h1>
+
+<!-- <div>
+    <form action="">
+        <label for="">Enter Email Id</label>
+        <input type="text" placeholder="Email Id">
+        <br>
+        <label for="">Enter Password</label>
+        <input type="password" placeholder="Password">
+    </form>
+</div> -->
+<h2 class="message">{{message}}</h2>
+<form #loginform="ngForm" class="example-form" (ngSubmit)="OnAddCourse()">
+    <!-- <small style="color: red;">{{message}}</small> -->
+    <mat-form-field class="example-full-width">
+        <mat-label>Course Name</mat-label><br>
+        <input type="text" matInput placeholder="Ex. Angular" name = "courseName" [(ngModel)] = "course.courseName" required><br><br>
+    </mat-form-field>
+    <br>
+    <mat-form-field class="example-full-width">
+      <mat-label>Course Description</mat-label><br>
+      <input type="text" matInput placeholder="Ex. It is a tutorial on Angular" name = "courseDescription" [(ngModel)] = "course.courseDescription" required><br><br>
+    </mat-form-field>
+    <br>
+    <mat-form-field class="example-full-width">
+      <mat-label>Prerequisite</mat-label><br>
+      <input type="text" matInput placeholder="Ex. Javascript" name = "prerequisite" [(ngModel)] = "course.prerequisite" required><br><br>
+    </mat-form-field>
+    <br>
+    <mat-form-field class="example-full-width">
+      <mat-label>Skills (Enter ";" after every skill as a delimiter) </mat-label><br>
+      <input type="text" matInput placeholder="Ex. Javascript;Java;MySQL" name = "skillName" [(ngModel)] = "skill.skillName" required><br><br>
+    </mat-form-field>
+    <br>
+    <!-- <mat-label>CourseName</mat-label><br>
+    <input type="text" matInput placeholder="Ex. Angular" name = "courseName" [(ngModel)] = "course.courseName" required> -->
+
+      <!-- <mat-form-field class="example-full-width">
+        <mat-label>Password</mat-label>
+        <input type="password" matInput name="password" [(ngModel)] = "user.password" required>
+        <mat-error *ngIf="!passwordFormControl.hasError('required')">
+          Please enter the password
+        </mat-error>
+        <mat-error *ngIf="passwordFormControl.hasError('required')">
+          Password is <strong>required</strong>
+        </mat-error>
+      </mat-form-field> -->
+      <!-- <br><br>-->
+      <div class="fileSelect">
+        <mat-toolbar class="onlyThis">
+          <!-- Browse Button -->
+          <button mat-flat-button color="primary" class="btn">
+            Browse
+          </button>
+          <!-- Fetch selected filed on change -->
+          <input type="file" #fileInput id="uploadFile" (change)="onFileChanged($event.target.files)" name="file1" required multiple>
+          <!-- Display files names -->
+          <input matInput [(ngModel)]="fileAttr" readonly name="name" />
+        </mat-toolbar>
+      </div>
+      <br>
+    <button type="submit" mat-raised-button color="primary">Submit</button> 
+</form> 
+<br>
+<!-- <span class="register" (click) = "registerUser()">New User? <strong>Register Now</strong></span><br><br>
+<span class="register" (click) = "openDialog()"><strong>Forgot Password ?</strong></span> -->
+</div>
+
+

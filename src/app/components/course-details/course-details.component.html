@@ -1,0 +1,173 @@
+<mat-toolbar color="primary">
+    <button mat-icon-button routerLinkActive="active item" [routerLinkActiveOptions]="{exact : true}" routerLink="/viewCourse" class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>home</mat-icon>
+    </button>
+    <span>Course Management</span>
+    
+    <span class="example-spacer"></span>
+    <button mat-raised-button style="margin-right: 2%;" routerLinkActive="active item" [routerLinkActiveOptions]="{exact : true}" routerLink="/addCourse">Add Course</button>
+    <button mat-raised-button style="margin-right: 2%;" routerLinkActive="active item" [routerLinkActiveOptions]="{exact : true}" routerLink="/editCourse">My Courses</button>
+    <button mat-raised-button style="margin-right: 2%;" routerLinkActive="active item" [routerLinkActiveOptions]="{exact : true}" routerLink="/trends">Trends</button>
+    
+    <!-- <button mat-raised-button style="margin-right: 2%;" routerLinkActive="active item" [routerLinkActiveOptions]="{exact : true}" routerLink="/viewCourse">View Course</button> -->
+    <button mat-icon-button (click) = "signOut();" class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <mat-icon>logout</mat-icon>
+    </button>
+</mat-toolbar>
+
+<!-- {{viewCourse | json}} -->
+
+
+<mat-card class = "card">
+    <h1>
+    <div class = "example-card">
+        <span class="material-icons">menu_book</span>  
+        {{viewCourse.courseName}}
+    </div>
+    </h1>   
+    <div>
+        Created On: {{viewCourse.createdOn}}
+    </div>
+    <div>
+        Created By: {{loggedUser.firstName}}
+    </div>
+</mat-card>
+
+<mat-card class = "card">
+    <h1>
+        <div class = "example-card">
+            <span class="material-icons">
+                local_offer
+            </span> Description
+        </div> 
+    </h1>
+    <div>
+        {{viewCourse.courseDescription}}
+    </div>
+</mat-card>
+
+
+<mat-card class = "card">
+    <h1>
+        <div class = "example-card">
+            <span class="material-icons">
+                format_list_bulleted
+            </span> Skills Acquired After the Course Completion
+        </div>
+    </h1>
+
+    <div>
+        <ul>
+            <li *ngFor="let s of skill; let i = index">
+              {{s.skillName}}
+            </li>
+          </ul>
+    </div>
+</mat-card>
+
+<mat-card class = "card">
+    <h1>
+        <div class="example-card">
+            <span class="material-icons">
+                publish
+            </span> Upload New Material: <span class="space"></span> 
+            <button mat-raised-button *ngIf = "flag" color="primary" (click) = "openDialog1()"><span class="material-icons">
+                publish
+            </span> Upload</button>
+        </div>
+    </h1>
+</mat-card>
+
+<mat-card class="card">
+    <h1>
+        <div class = "example-card">
+            <span class="material-icons">
+                get_app
+            </span> Download Training Material:<span class="space"></span> 
+        </div>
+
+    </h1>
+            <div *ngFor = "let material of trainingMaterial; let i = index;">
+                <!-- {{material | json}} -->
+                {{i+1}}. {{material.fileName}}<br><span class="space"></span>
+            <button [disabled] = "isDisabled" mat-raised-button (click) = "downloadFile(material.fileData, material.fileType)" color="primary"><span class="material-icons">get_app</span> Download</button>
+            <span class="space"></span> <button (click) = "openDialog(material.materialId)" *ngIf = "flag" mat-raised-button color="primary"><span class="material-icons">publish</span> Upload</button>
+            <span class="space"></span> <button [disabled] = "isDisabled" (click) = "deleteMaterial(material.materialId)" *ngIf = "flag" mat-raised-button color="warn">
+                <span class="material-icons">
+                    delete
+                </span></button>
+                <br><br>
+                <mat-accordion>
+                    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header>
+                      <mat-panel-title style = "color: blue;">
+                        {{panelOpenState ? 'Click here to close!' : 'Click here to view previous versions!'}}
+                      </mat-panel-title>
+                      <!-- <mat-panel-description style = "color: blue;">
+                         
+                      </mat-panel-description> -->
+                    </mat-expansion-panel-header>
+                    <p><strong>PREVIOUS VERSIONS</strong></p>
+                    <div class = "example-card" *ngFor = "let version of allPreviousVersions[i]; let j = index">
+                         Version -{{j+1}}:<span class="space"></span> 
+                        <button mat-raised-button (click) = "downloadFile(version.fileData, version.fileType)" color="primary"><span class="material-icons">get_app</span> Download</button>
+                        <span class="space"></span>  
+                        {{version.fileName}}
+                        <span class="space"></span>     
+                        Uploaded On:   {{version.createdOn}}
+                        <br> <br>
+                    </div>
+                  </mat-expansion-panel>
+                </mat-accordion>
+                <br><br>
+
+            </div>
+</mat-card>
+    
+
+<mat-card class="card">
+    <h1>
+        <div class = "example-card">
+            <span class="material-icons">
+                feedback
+            </span> Feedbacks
+        </div>
+    </h1> 
+            <mat-form-field class="example-full-width">
+                <mat-label>Give a Feedback</mat-label><br>
+                <input type="text" matInput placeholder="Give a Feedback" name = "feedbackText" [(ngModel)] = "newFeedback.feedbackText" required><br><br>
+            </mat-form-field>
+            <br>
+            <br>
+            <mat-form-field  class="example-full-width">
+                <mat-label>Rating</mat-label>
+                <mat-select [(ngModel)]="newFeedback.rating">
+                  <mat-option value=1>1</mat-option>
+                  <mat-option value=2>2</mat-option>
+                  <mat-option value=3>3</mat-option>
+                  <mat-option value=4>4</mat-option>
+                  <mat-option value=5>5</mat-option>
+                </mat-select>
+              </mat-form-field>
+
+        <!-- </mat-form-field> -->
+        <span class = "space"></span>
+        <button (click)="onAddFeedBack()" mat-raised-button color = "primary">Submit</button> 
+        
+
+    <div>
+        <ul>
+            <li *ngFor="let f of feedback; let i = index">
+
+              <strong>{{i+1}}. {{f.participantName}}</strong><br>
+              {{f.feedbackText}}<br>
+              Rating: {{f.rating}}<span class="material-icons">
+                star_rate
+                </span><br>
+              Posted On: {{f.createdOn | date: 'dd-MM-yyyy'}}<br><br>
+              
+            </li>
+            
+          </ul>
+    </div>
+</mat-card>

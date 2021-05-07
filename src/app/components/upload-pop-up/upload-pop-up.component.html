@@ -1,0 +1,15 @@
+<div class="fileSelect">
+    <mat-toolbar class="onlyThis">
+      <!-- Browse Button -->
+      <button mat-flat-button color="primary" class="btn">
+        Browse
+      </button>
+      <!-- Fetch selected filed on change -->
+      <input type="file" #fileInput id="uploadFile" (change)="onFileChanged($event.target.files[0])" name="file1" required>
+      <!-- Display files names -->
+      <input matInput [(ngModel)]="fileAttr" readonly name="name" />
+    </mat-toolbar>
+  </div>
+  <br>
+<button type="submit" (click) = "onAddMaterial()" mat-raised-button color="primary">Submit</button> 
+<!-- {{data.materialId}} -->

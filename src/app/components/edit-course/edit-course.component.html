@@ -1,0 +1,107 @@
+<mat-toolbar color="primary">
+    <button mat-icon-button routerLinkActive="active item" [routerLinkActiveOptions]="{exact : true}" routerLink="/viewCourse" class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>home</mat-icon>
+    </button>
+    <span>Course Management</span>
+    
+    <span class="example-spacer"></span>
+    <button mat-raised-button style="margin-right: 2%;" routerLinkActive="active item" [routerLinkActiveOptions]="{exact : true}" routerLink="/addCourse">Add Course</button>
+    <button mat-raised-button style="margin-right: 2%;" routerLinkActive="active item" [routerLinkActiveOptions]="{exact : true}" routerLink="/editCourse">My Courses</button>
+    <button mat-raised-button style="margin-right: 2%;" routerLinkActive="active item" [routerLinkActiveOptions]="{exact : true}" routerLink="/trends">Trends</button>
+    
+    <!-- <button mat-raised-button style="margin-right: 2%;" routerLinkActive="active item" [routerLinkActiveOptions]="{exact : true}" routerLink="/viewCourse">View Course</button> -->
+    <button mat-icon-button (click) = "signOut();" class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <mat-icon>logout</mat-icon>
+    </button>
+</mat-toolbar>
+
+
+<mat-form-field class = "search">
+  <mat-label>Search</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Ang" #input>
+</mat-form-field>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8" >
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  
+    <!-- Position Column -->
+    <!-- <div *matCellDef="let element1">-->
+      <!-- <div *ngIf = "element1.status == 'approved'">  -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef><strong> No. </strong> </th>
+      <td mat-cell *matCellDef="let element; let i = index;"> <strong>{{i+1}}</strong></td>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef><strong> Course Title </strong></th>
+      <td mat-cell *matCellDef="let element"><strong>{{element.courseName}}</strong></td>
+    </ng-container>
+  
+    <!-- Weight Column -->
+   
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef><strong> Course Description </strong></th>
+      <td mat-cell *matCellDef="let element">{{element.courseDescription}}</td>
+    </ng-container>
+  
+   
+  
+    <!-- <ng-container matColumnDef="creator">
+      <th mat-header-cell *matHeaderCellDef><strong> Creator </strong></th>
+      <td mat-cell *matCellDef="let element"> <div *ngIf = "element.status == 'APPROVED'">{{element.creator.name}} </div> </td>
+    </ng-container>
+  
+  
+    <ng-container  matColumnDef="views" >
+      <th  mat-header-cell *matHeaderCellDef><strong *ngIf="activeButton == 'mostviewed'"> Views </strong></th>
+      <td  mat-cell *matCellDef="let element"> <div *ngIf="activeButton == 'mostviewed'">{{element.views}} </div> </td>
+    </ng-container> -->
+
+    <ng-container matColumnDef="prerequisite">
+      <th mat-header-cell *matHeaderCellDef><strong> Prerequisite </strong></th>
+      <td mat-cell *matCellDef="let element">{{element.prerequisite}}</td>
+    </ng-container>
+  
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="createdOn">
+      <th mat-header-cell *matHeaderCellDef><strong> Uploaded On </strong></th>
+      <td mat-cell *matCellDef="let element">{{element.createdOn | date}}</td>
+    </ng-container>
+  
+    <ng-container matColumnDef="view">
+      <th mat-header-cell *matHeaderCellDef><strong> View Course </strong></th>
+      <td mat-cell *matCellDef="let element"><button (click) = "showDetails(element)" mat-raised-button color="primary">
+        <span class="material-icons">
+            visibility
+        </span> View</button></td>
+    </ng-container> 
+
+    <ng-container matColumnDef="edit">
+        <th mat-header-cell *matHeaderCellDef><strong> Edit </strong></th>
+        <td mat-cell *matCellDef="let element"><button mat-raised-button color="primary" (click) = "openDialog(element)">
+          <span class="material-icons">
+              create
+          </span></button></td>
+      </ng-container>
+
+      <ng-container matColumnDef="delete">
+        <th mat-header-cell *matHeaderCellDef><strong> Delete </strong></th>
+        <td mat-cell *matCellDef="let element"><button mat-raised-button color="warn" (click) = "onDelete(element)">
+          <span class="material-icons">
+            delete
+            </span></button></td>
+      </ng-container>
+  <!-- </div>
+  </div> -->
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+    </tr>
+    
+  </table>

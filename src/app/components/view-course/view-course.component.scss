@@ -1,0 +1,30 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+
+  table {
+    margin-top: 10px;
+    padding-left: 40px;
+    padding-right: 40px;
+    width: 100%;
+}
+
+.search {
+  padding-left: 40px;
+    padding-right: 40px;
+}
+
+
+.phase-active{
+    background-color:#3f51b5 !important;
+    color:ivory;
+  }
+
+  h1 {
+    color: #3F51B5;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-size: 2em;
+    letter-spacing: -2px;
+    margin-top: 10px;
+    padding-left: 50px;
+  }

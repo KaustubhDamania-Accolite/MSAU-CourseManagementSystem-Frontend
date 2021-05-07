@@ -1,0 +1,39 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+
+// input {
+//   width: 100%;
+// }
+
+.example-full-width {
+  width: 50%;
+}
+
+.message {
+  color: green;
+}
+
+.fileSelect{
+  height:max-content;
+  cursor: pointer;
+  width: 30%;
+}
+.onlyThis{
+  margin-top: 20px;
+  height: auto !important;
+  cursor: pointer;
+  // width: 300px;
+}
+
+#uploadFile {
+  // top:47%;
+  // left: 55%;
+  // right:58%;
+  width: 25%;    
+  z-index: 9;
+  opacity: 0;
+  height: 5%;
+  cursor: pointer;
+  position: absolute;
+}

@@ -1,0 +1,74 @@
+<mat-toolbar color="primary">
+    <button mat-icon-button routerLinkActive="active item" [routerLinkActiveOptions]="{exact : true}" routerLink="/viewCourse" class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>home</mat-icon>
+    </button>
+    <span>Course Management</span>
+    
+    <span class="example-spacer"></span>
+    <!-- <button mat-raised-button  routerLinkActive="active item" [routerLinkActiveOptions]="{exact : true}" routerLink="/course">Add Course</button> -->
+    <button mat-raised-button style="margin-right: 2%;" routerLinkActive="active item" [routerLinkActiveOptions]="{exact : true}" routerLink="/addCourse">Add Course</button>
+    <button mat-raised-button style="margin-right: 2%;" routerLinkActive="active item" [routerLinkActiveOptions]="{exact : true}" routerLink="/editCourse">My Courses</button>
+    <button mat-raised-button style="margin-right: 2%;" routerLinkActive="active item" [routerLinkActiveOptions]="{exact : true}" routerLink="/trends">Trends</button>
+    
+    <!-- <button mat-raised-button style="margin-right: 2%;" >View Course</button> -->
+    
+    <button mat-icon-button (click) = "signOut();" class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <mat-icon>logout</mat-icon>
+    </button>
+</mat-toolbar>
+
+<button class = "heading" mat-flat-button color = "warn">FEEDBACK</button>
+
+<!-- <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" >
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef><strong> No. </strong> </th>
+      <td mat-cell *matCellDef="let element; let i = index;"> <strong>{{i+1}}</strong></td>
+    </ng-container>
+
+    <ng-container matColumnDef="courseName">
+      <th mat-header-cell *matHeaderCellDef><strong> Course Title </strong></th>
+      <td mat-cell *matCellDef="let element"><strong>{{element.courseName}}</strong></td>
+    </ng-container>
+
+    <ng-container matColumnDef="feedbackCount">
+        <th mat-header-cell *matHeaderCellDef><strong> No. of Feedbacks </strong></th>
+        <td mat-cell *matCellDef="let element"><strong>{{element.count}}</strong></td>
+    </ng-container>    
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  
+</table> -->
+
+<div class = "graph">
+    <canvas id="barchart"></canvas>
+</div>
+
+<br>
+<button class = "heading" mat-flat-button color = "warn">RATING</button>
+
+<!-- <table mat-table [dataSource]="dataSource1" class="mat-elevation-z8" >
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef><strong> No. </strong> </th>
+      <td mat-cell *matCellDef="let element; let i = index;"> <strong>{{i+1}}</strong></td>
+    </ng-container>
+  
+    <ng-container matColumnDef="courseName">
+      <th mat-header-cell *matHeaderCellDef><strong> Course Title </strong></th>
+      <td mat-cell *matCellDef="let element"><strong>{{element.courseName}}</strong></td>
+    </ng-container>
+
+    <ng-container matColumnDef="avgRating">
+        <th mat-header-cell *matHeaderCellDef><strong> Average Rating </strong></th>
+        <td mat-cell *matCellDef="let element"><strong>{{element.avgRating}}</strong></td>
+    </ng-container>    
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns1"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns1;"></tr>
+  
+</table> -->
+
+<div class = "graph">
+    <canvas id="barchart1"></canvas>
+</div>
